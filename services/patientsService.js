@@ -13,14 +13,19 @@ const patientsService = {
       console.log(err.message);
     }
   },
-  async create() {
-    let id = Math.floor(Math.random() * 100000);
-    id = String(id).padStart(5, "0")
+  async create(patient) {
+    let id;
+    if (patient.IdPatient === undefined) { // check if an id was included
+      id = Math.floor(Math.random() * 100000);
+      id = String(id).padStart(5, "0")
+    } else {
+      id = String(patient.IdPatient);
+    }
     const newItem = {
       id: id,
       IdPatient: id,
-      FirstName: "Frank",
-      LastName: "Smith",
+      FirstName: patient.FirstName,
+      LastName: patient.LastName,
     };
     const { resource } = await this.container.items.create(newItem);
     return resource;
