@@ -26,6 +26,7 @@ const patientsService = {
       IdPatient: id,
       FirstName: patient.FirstName,
       LastName: patient.LastName,
+      MRN: patient.MRN
     };
     const { resource } = await this.container.items.create(newItem);
     return resource;
@@ -40,6 +41,12 @@ const patientsService = {
     const contents = await item.read();
     return contents.resource;
   },
+  async update(patient) {
+    const { resource } = await this.container.items.upsert(patient);
+      // .replace(patient);
+    return resource;
+  },
+  //container.items.upsert(person);
   // async update(product) {
   //   const { resource } = await this.container.item(
   //     product.id,
