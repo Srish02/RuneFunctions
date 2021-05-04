@@ -39,7 +39,7 @@ const patientsService = {
   async read(id) {
     const item = this.container.item(id, id);
     const contents = await item.read();
-    return contents.resource;
+    return JSON.stringify(contents.resource);
   },
   async update(patient) {
     const { resource } = await this.container.items.upsert(patient);
