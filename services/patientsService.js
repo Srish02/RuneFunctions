@@ -27,7 +27,8 @@ const patientsService = {
       FirstName: patient.FirstName,
       LastName: patient.LastName,
       MRN: patient.MRN,
-      TestResults:"test"
+      TestResults:"test",
+      Token:"token"
     };
     const { resource } = await this.container.items.create(newItem);
     return resource;
@@ -49,6 +50,7 @@ const patientsService = {
     //doc.completed = true
     const patient = contents.resource
     patient.TestResults = updatedPatient.TestResults
+    patient.Token = updatedPatient.Token
 
     const { resource } = await this.container
        .item(id, id)
