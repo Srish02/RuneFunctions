@@ -27,7 +27,7 @@ const patientsService = {
       FirstName: patient.FirstName,
       LastName: patient.LastName,
       MRN: patient.MRN,
-      TestResults:patient.TestResults
+      TestResults:"test"
     };
     const { resource } = await this.container.items.create(newItem);
     return resource;
@@ -44,10 +44,10 @@ const patientsService = {
   },
   async update(id, updatedPatient) {
     // debug('Update an item in the database')
-    const doc = await this.read(id)
-    doc.completed = true
-    const patient = doc
-    patient.FirstName = updatedPatient.FirstName
+    const item = this.container.item(id, id);
+    const contents = await item.read();
+    //doc.completed = true
+    const patient = contents.resource
     patient.TestResults = updatedPatient.TestResults
 
     const { resource } = await this.container
