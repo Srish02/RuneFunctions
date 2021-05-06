@@ -27,8 +27,7 @@ const patientsService = {
       FirstName: patient.FirstName,
       LastName: patient.LastName,
       MRN: patient.MRN,
-      TestResults:"test",
-      Token:"token"
+      ExpoNotificationToken: patient.ExpoNotificationToken
     };
     const { resource } = await this.container.items.create(newItem);
     return resource;
