@@ -26,6 +26,9 @@ const eventsService = {
     if ("CreatedAt" in event) {
       throw Error("Cannot specify CreatedAt; this field will be generated for you.")
     }
+    if (!("EventType" in event)) {
+      throw Error("Expected field 'EventType' to be included in object passed as an argument.")
+    }
 
     const newItem = {
       ...event,

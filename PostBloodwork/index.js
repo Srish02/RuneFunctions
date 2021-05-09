@@ -17,7 +17,7 @@ module.exports = async function (context, req) {
     // add an event referencing the bloodwork data
     const event = await eventsService.create({
       IdPatient: IdPatient,
-      Name: "BloodworkAdded",
+      EventType: "BloodworkAdded",
       Description: `Bloodwork from ${month} ${day} has been posted.`,
       IdTestResult: bloodworkData.IdBloodTest,
     });
