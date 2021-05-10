@@ -19,14 +19,9 @@ const testResultsService = {
   async createBloodwork(data) {
     const IdTestResult = uuidv4();
 
-    // generate some random data
-    const testDate = new Date();
-    testDate.setDate(testDate.getDate() - Math.floor(Math.random() * 10));
-
     const newItem = {
       id: IdTestResult,
       Name: "Blood test",
-      // TestDate: testDate,
       RBC: data.RBC,
       GlucoseLevel: data.GlucoseLevel,
       Thyroid: data.Thyroid,
