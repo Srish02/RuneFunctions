@@ -16,7 +16,7 @@ const testResultsService = {
       console.log(err.message);
     }
   },
-  async createBloodwork() {
+  async createBloodwork(data) {
     const IdTestResult = uuidv4();
 
     // generate some random data
@@ -26,10 +26,13 @@ const testResultsService = {
     const newItem = {
       id: IdTestResult,
       Name: "Blood test",
-      TestDate: testDate,
-      WhiteBloodCellCount: Math.floor(Math.random() * 1000),
-      RedBloodCellCount: Math.floor(Math.random() * 1000),
-      PlateletCount: Math.floor(Math.random() * 1000),
+      // TestDate: testDate,
+      RBC: data.RBC,
+      GlucoseLevel: data.GlucoseLevel,
+      Thyroid: data.Thyroid,
+      // WhiteBloodCellCount: Math.floor(Math.random() * 1000),
+      // RedBloodCellCount: Math.floor(Math.random() * 1000),
+      // PlateletCount: Math.floor(Math.random() * 1000),
       IdTestResult: IdTestResult,
       CreatedAt: (new Date()).toISOString(),
     };
