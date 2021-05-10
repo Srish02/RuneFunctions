@@ -10,9 +10,9 @@ module.exports = async function (context, req) {
 
     // put the bloodwork test results in the TestResults table -- this is random data as proof of concept
     const bloodworkData = await testResultsService.createBloodwork(req.body);
-    const date = Date.parse(bloodworkData.TestDate);
+    const date = Date.parse(bloodworkData.CreatedAt);
     const month = new Intl.DateTimeFormat('en-US', {month: 'long'}).format(date);
-    const day = new Intl.DateTimeFormat('en-US', {weekday: 'long'}).format(date);
+    const day = new Intl.DateTimeFormat('en-US', {day: 'numeric'}).format(date);
 
     // add an event referencing the bloodwork data
     const event = await eventsService.create({

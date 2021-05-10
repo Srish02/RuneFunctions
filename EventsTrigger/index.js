@@ -25,7 +25,7 @@ module.exports = async function (context, documents) {
             await axios.post('https://exp.host/--/api/v2/push/send', {
                 "to": patient.ExpoNotificationToken,
                 "title": "Rune Health Notification",
-                "body": "You have new test results waiting for you."
+                "body": document.Description,
             }).then(function (response) {
                 console.log(response)
             }).catch(function (error) {
